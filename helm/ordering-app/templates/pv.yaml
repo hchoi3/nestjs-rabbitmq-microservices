@@ -12,7 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: gp2
   hostPath:
-    path: /volume/data
+    path: /opt/bitnami/rabbitmq/var/lib/rabbitmq/
 
 ---
 apiVersion: v1
@@ -28,4 +28,36 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: gp2
   hostPath:
-    path: /volume/data1
+    path: /tmp/
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv2
+  namespace: default 
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: gp2
+  hostPath:
+    path: /usr/
+
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: mongodb-pv3
+#   namespace: default 
+# spec:
+#   capacity:
+#     storage: 10Gi
+#   accessModes:
+#     - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Retain
+#   storageClassName: gp2
+#   hostPath:
+#     path: /opt/
